@@ -15,4 +15,17 @@ public class VisitDateValidator {
             }
         }
     }
+
+    private static void isRightRange(String input) {
+        int changedInput = Integer.parseInt(input);
+        if (changedInput < 1 || changedInput > 31) {
+            throw new IllegalArgumentException(Constant.ERROR_MESSAGE + Constant.INVALID_DATE);
+        }
+    }
+
+    public void validateAll(String input) {
+        isNothing(input);
+        isDigit(input);
+        isRightRange(input);
+    }
 }
