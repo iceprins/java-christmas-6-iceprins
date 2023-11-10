@@ -47,6 +47,15 @@ public class OrderedMenuValidator {
         }
     }
 
+    private static void isOrderedOverOne(List<String> input) {
+        for (String s : input) {
+            List<String> temp = Arrays.asList(s.split("-"));
+            if (Integer.parseInt(temp.get(1)) < 1) {
+                throw new IllegalArgumentException(Constant.ERROR_MESSAGE + Constant.INVALID_MENU);
+            }
+        }
+    }
+
     private static List<String> getBeverage() {
         Menu[] menus = (Menu.values());
         List<String> beverages = new ArrayList<>();
