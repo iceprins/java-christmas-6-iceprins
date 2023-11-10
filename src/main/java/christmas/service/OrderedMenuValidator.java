@@ -10,10 +10,10 @@ public class OrderedMenuValidator {
         }
     }
 
-    public static void isRightFormat(List<String> input) {
+    private static void isRightFormat(List<String> input) {
         String std = "(^[가-힣]*)-[0-9]{1,2}";
-        for (int i = 0; i < input.size(); i++) {
-            if (!Pattern.matches(std, input.get(i))) {
+        for (String s : input) {
+            if (!Pattern.matches(std, s)) {
                 throw new IllegalArgumentException(Constant.ERROR_MESSAGE + Constant.INVALID_MENU);
             }
         }
