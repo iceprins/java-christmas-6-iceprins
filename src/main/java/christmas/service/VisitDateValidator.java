@@ -23,9 +23,16 @@ public class VisitDateValidator {
         }
     }
 
-    public void validateAll(String input) {
-        isNothing(input);
-        isDigit(input);
-        isRightRange(input);
+    public boolean validateAll(String input) {
+        boolean check = true;
+        try {
+            isNothing(input);
+            isDigit(input);
+            isRightRange(input);
+        } catch (IllegalArgumentException e) {
+            check = false;
+            System.out.println(e.getMessage());
+        }
+        return check;
     }
 }
