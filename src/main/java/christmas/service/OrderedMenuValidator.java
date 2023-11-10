@@ -25,8 +25,8 @@ public class OrderedMenuValidator {
 
     private static void isInMenu(List<String> menus, List<String> input) {
         for (String s : input) {
-            List<String> temp = Arrays.asList(s.split("-"));
-            if (!menus.contains(temp.get(0))) {
+            List<String> pair = Arrays.asList(s.split("-"));
+            if (!menus.contains(pair.get(0))) {
                 throw new IllegalArgumentException(Constant.ERROR_MESSAGE + Constant.INVALID_MENU);
             }
         }
@@ -36,8 +36,8 @@ public class OrderedMenuValidator {
         List<String> beverages = getBeverage();
         boolean check = false;
         for (String s : input) {
-            List<String> temp = Arrays.asList(s.split("-"));
-            if (!beverages.contains(temp.get(0))) {
+            List<String> pair = Arrays.asList(s.split("-"));
+            if (!beverages.contains(pair.get(0))) {
                 check = true;
                 break;
             }
@@ -49,8 +49,8 @@ public class OrderedMenuValidator {
 
     private static void isOrderedOverOne(List<String> input) {
         for (String s : input) {
-            List<String> temp = Arrays.asList(s.split("-"));
-            if (Integer.parseInt(temp.get(1)) < 1) {
+            List<String> pair = Arrays.asList(s.split("-"));
+            if (Integer.parseInt(pair.get(1)) < 1) {
                 throw new IllegalArgumentException(Constant.ERROR_MESSAGE + Constant.INVALID_MENU);
             }
         }
@@ -59,11 +59,23 @@ public class OrderedMenuValidator {
     private static void isOrderedLessThanTwenty(List<String> input) {
         int sum = 0;
         for (String s : input) {
-            List<String> temp = Arrays.asList(s.split("-"));
-            sum += Integer.parseInt(temp.get(1));
+            List<String> pair = Arrays.asList(s.split("-"));
+            sum += Integer.parseInt(pair.get(1));
         }
         if (sum > 20) {
             throw new IllegalArgumentException(Constant.ERROR_MESSAGE + Constant.OVER_TWENTY);
+        }
+    }
+
+    private static void isMenuDuplicated(List<String> input) {
+        List<String> temp = new ArrayList<>();
+        for (String s : input) {
+            List<String> pair = Arrays.asList(s.split("-"));
+            if (!temp.contains(pair.get(0))) {
+                temp.add(pair.get(0));
+                continue;
+            }
+            throw new IllegalArgumentException(Constant.ERROR_MESSAGE + Constant.INVALID_DATE);
         }
     }
 
