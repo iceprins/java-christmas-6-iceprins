@@ -56,6 +56,17 @@ public class OrderedMenuValidator {
         }
     }
 
+    private static void isOrderedLessThanTwenty(List<String> input) {
+        int sum = 0;
+        for (String s : input) {
+            List<String> temp = Arrays.asList(s.split("-"));
+            sum += Integer.parseInt(temp.get(1));
+        }
+        if (sum > 20) {
+            throw new IllegalArgumentException(Constant.ERROR_MESSAGE + Constant.OVER_TWENTY);
+        }
+    }
+
     private static List<String> getBeverage() {
         Menu[] menus = (Menu.values());
         List<String> beverages = new ArrayList<>();
