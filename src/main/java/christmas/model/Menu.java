@@ -47,4 +47,15 @@ public enum Menu {
         names.forEach(Menu -> menus.add(Menu.getMenuName()));
         return menus;
     }
+
+    public static List<String> getBeverageNameSet() {
+        Menu[] menus = (Menu.values());
+        List<String> beverages = new ArrayList<>();
+        for (Menu menu : menus) {
+            if (menu.getType().equals("beverage")) {
+                beverages.add(menu.getMenuName());
+            }
+        }
+        return beverages;
+    }
 }
