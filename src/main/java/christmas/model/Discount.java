@@ -35,4 +35,14 @@ public enum Discount {
         }
         return false;
     }
+
+    public static int getTotalBenefit() {
+        int sum = 0;
+        for (Discount discountName : Discount.values()) {
+            if (discountName.getAmount() != 0) {
+                sum += discountName.getAmount();
+            }
+        }
+        return sum;
+    }
 }
