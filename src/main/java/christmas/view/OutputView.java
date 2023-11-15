@@ -26,4 +26,9 @@ public class OutputView {
         System.out.println(OutputViewConstant.TOTAL_BEFORE_DC_TITLE);
         System.out.printf(OutputViewConstant.MONEY_UNIT + System.lineSeparator(), sum);
     }
+
+    public void printPresentMenu(String presentMenu) {
+        System.out.println(OutputViewConstant.PRESENT_MENU_TITLE);
+        System.out.println(presentMenu + System.lineSeparator());
+    }
 }
