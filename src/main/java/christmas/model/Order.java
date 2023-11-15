@@ -40,4 +40,16 @@ public class Order {
         }
         return sum;
     }
+
+    public static int getNumberOfMain(Map<String, Integer> orders) {
+        int sum = 0;
+        List<String> menuNames = new ArrayList<>(orders.keySet());
+
+        for (Menu menu : Menu.getMainMenu()) {
+            if (menuNames.contains(menu.getMenuName())) {
+                sum += orders.get(menu.getMenuName());
+            }
+        }
+        return sum;
+    }
 }
