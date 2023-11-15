@@ -37,4 +37,9 @@ public class OutputView {
         benefitHistory.forEach(System.out::println);
         System.out.print(System.lineSeparator());
     }
+
+    public void printTotalBenefit(String totalBenefit) {
+        System.out.println(OutputViewConstant.TOTAL_BENEFIT_TITLE);
+        System.out.printf(OutputViewConstant.MONEY_UNIT + System.lineSeparator(), totalBenefit);
+    }
 }
