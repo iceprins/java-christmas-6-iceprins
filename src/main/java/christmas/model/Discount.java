@@ -84,4 +84,11 @@ public enum Discount {
         }
         return getBenefitInfo();
     }
+
+    public static String getPresentMenu() {
+        if (PRESENT_EVENT.getAmount() == 0) {
+            return OutputViewConstant.NOTHING;
+        }
+        return OutputViewConstant.CHAMPAGNE;
+    }
 }
