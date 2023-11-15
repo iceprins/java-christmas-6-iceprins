@@ -10,7 +10,7 @@ import java.util.regex.Pattern;
 public class OrderedMenuValidator {
     private static void isNothing(List<String> input) {
         if (input.isEmpty()) {
-            throw new IllegalArgumentException(Constant.ERROR_MESSAGE + Constant.NOTHING_MENU);
+            throw new IllegalArgumentException(InputViewConstant.ERROR_MESSAGE + InputViewConstant.INVALID_MENU);
         }
     }
 
@@ -18,22 +18,23 @@ public class OrderedMenuValidator {
         String std = "(^[가-힣]*)-[0-9]{1,2}";
         for (String s : input) {
             if (!Pattern.matches(std, s)) {
-                throw new IllegalArgumentException(Constant.ERROR_MESSAGE + Constant.INVALID_MENU);
+                throw new IllegalArgumentException(InputViewConstant.ERROR_MESSAGE + InputViewConstant.INVALID_MENU);
             }
         }
     }
 
-    private static void isInMenu(List<String> menus, List<String> input) {
+    private static void isInMenu(List<String> input) {
+        List<String> menus = Menu.getMenuNameSet();
         for (String s : input) {
             List<String> pair = Arrays.asList(s.split("-"));
             if (!menus.contains(pair.get(0))) {
-                throw new IllegalArgumentException(Constant.ERROR_MESSAGE + Constant.INVALID_MENU);
+                throw new IllegalArgumentException(InputViewConstant.ERROR_MESSAGE + InputViewConstant.INVALID_MENU);
             }
         }
     }
 
     private static void isOnlyBeverage(List<String> input) {
-        List<String> beverages = getBeverage();
+        List<String> beverages = Menu.getBeverageNameSet();
         boolean check = false;
         for (String s : input) {
             List<String> pair = Arrays.asList(s.split("-"));
@@ -43,7 +44,7 @@ public class OrderedMenuValidator {
             }
         }
         if (!check) {
-            throw new IllegalArgumentException(Constant.ERROR_MESSAGE + Constant.ONLY_BEVERAGE);
+            throw new IllegalArgumentException(InputViewConstant.ERROR_MESSAGE + InputViewConstant.INVALID_MENU);
         }
     }
 
@@ -51,7 +52,7 @@ public class OrderedMenuValidator {
         for (String s : input) {
             List<String> pair = Arrays.asList(s.split("-"));
             if (Integer.parseInt(pair.get(1)) < 1) {
-                throw new IllegalArgumentException(Constant.ERROR_MESSAGE + Constant.INVALID_MENU);
+                throw new IllegalArgumentException(InputViewConstant.ERROR_MESSAGE + InputViewConstant.INVALID_MENU);
             }
         }
     }
@@ -63,7 +64,7 @@ public class OrderedMenuValidator {
             sum += Integer.parseInt(pair.get(1));
         }
         if (sum > 20) {
-            throw new IllegalArgumentException(Constant.ERROR_MESSAGE + Constant.OVER_TWENTY);
+            throw new IllegalArgumentException(InputViewConstant.ERROR_MESSAGE + InputViewConstant.INVALID_MENU);
         }
     }
 
@@ -75,18 +76,7 @@ public class OrderedMenuValidator {
                 temp.add(pair.get(0));
                 continue;
             }
-            throw new IllegalArgumentException(Constant.ERROR_MESSAGE + Constant.INVALID_DATE);
+            throw new IllegalArgumentException(InputViewConstant.ERROR_MESSAGE + InputViewConstant.INVALID_MENU);
         }
-    }
-
-    private static List<String> getBeverage() {
-        Menu[] menus = (Menu.values());
-        List<String> beverages = new ArrayList<>();
-        for (Menu menu : menus) {
-            if (menu.getType().equals("beverage")) {
-                beverages.add(menu.getMenuName());
-            }
-        }
-        return beverages;
     }
 }
