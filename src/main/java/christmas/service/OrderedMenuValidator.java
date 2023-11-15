@@ -79,4 +79,21 @@ public class OrderedMenuValidator {
             throw new IllegalArgumentException(InputViewConstant.ERROR_MESSAGE + InputViewConstant.INVALID_MENU);
         }
     }
+
+    public boolean validateAll(List<String> input) {
+        boolean check = true;
+        try {
+            isNothing(input);
+            isRightFormat(input);
+            isInMenu(input);
+            isOnlyBeverage(input);
+            isOrderedOverOne(input);
+            isOrderedLessThanTwenty(input);
+            isMenuDuplicated(input);
+        } catch (IllegalArgumentException e) {
+            check = false;
+            System.out.println(e.getMessage());
+        }
+        return check;
+    }
 }
