@@ -47,4 +47,14 @@ public class OutputView {
         System.out.println(OutputViewConstant.TOTAL_AFTER_DC_TITLE);
         System.out.printf(OutputViewConstant.MONEY_UNIT + System.lineSeparator(), totalAfterDiscount);
     }
+
+    public void printEventBadge(String badge) {
+        System.out.println(OutputViewConstant.EVENT_BADGE_TITLE);
+        if (badge == null) {
+            System.out.println(OutputViewConstant.NOTHING);
+        }
+        if (badge != null) {
+            System.out.println(badge);
+        }
+    }
 }
