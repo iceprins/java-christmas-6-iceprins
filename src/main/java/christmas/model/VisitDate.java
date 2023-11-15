@@ -1,5 +1,7 @@
 package christmas.model;
 
+import christmas.service.OutputViewConstant;
+
 import java.util.*;
 
 public class VisitDate {
@@ -7,6 +9,7 @@ public class VisitDate {
     static final int PRESENT_EVENT_CRITERION = 120000;
     static final int SPECIAL_DISCOUNT_AMOUNT = 1000;
     static final int PRESENT_EVENT_AMOUNT = 25000;
+    static final int EVENT_BASE_AMOUNT = 10000;
 
     private final int date;
     public VisitDate(int date) {
@@ -15,6 +18,16 @@ public class VisitDate {
 
     public int getDate() {
         return date;
+    }
+
+    public void applyBenefit(Map<String, Integer> orders, int totalBeforeDc) {
+        if (totalBeforeDc >= EVENT_BASE_AMOUNT) {
+            calculateChristmasDiscount();
+            calculateWeekdayDiscount(orders);
+            calculateWeekendDiscount(orders);
+            calculatedSpecialDiscount();
+            calculatedPresentEvent(totalBeforeDc);
+        }
     }
 
     private void calculateChristmasDiscount() {
