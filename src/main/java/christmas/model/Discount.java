@@ -74,4 +74,14 @@ public enum Discount {
         }
         return benefitHistory;
     }
+
+    public static List<String> getBenefitHistory() {
+        List<String> result = new ArrayList<>();
+
+        if (!isNoDiscount()) {
+            result.add(OutputViewConstant.NOTHING);
+            return result;
+        }
+        return getBenefitInfo();
+    }
 }
