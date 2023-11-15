@@ -31,4 +31,10 @@ public class OutputView {
         System.out.println(OutputViewConstant.PRESENT_MENU_TITLE);
         System.out.println(presentMenu + System.lineSeparator());
     }
+
+    public void printBenefitHistory(List<String> benefitHistory) {
+        System.out.println(OutputViewConstant.BENEFIT_HISTORY_TITLE);
+        benefitHistory.forEach(System.out::println);
+        System.out.print(System.lineSeparator());
+    }
 }
