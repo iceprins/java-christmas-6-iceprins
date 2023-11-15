@@ -42,4 +42,9 @@ public class OutputView {
         System.out.println(OutputViewConstant.TOTAL_BENEFIT_TITLE);
         System.out.printf(OutputViewConstant.MONEY_UNIT + System.lineSeparator(), totalBenefit);
     }
+
+    public void printTotalAfterDc(String totalAfterDiscount) {
+        System.out.println(OutputViewConstant.TOTAL_AFTER_DC_TITLE);
+        System.out.printf(OutputViewConstant.MONEY_UNIT + System.lineSeparator(), totalAfterDiscount);
+    }
 }
