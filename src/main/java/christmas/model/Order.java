@@ -24,4 +24,8 @@ public class Order {
         }
         return total;
     }
+
+    public int getTotalAfterDc() {
+        return getTotalBeforeDc() -Discount.getTotalDiscount();
+    }
 }
