@@ -1,5 +1,10 @@
 package christmas.model;
 
+import christmas.service.OutputViewConstant;
+
+import java.text.DecimalFormat;
+import java.util.*;
+
 public enum Discount {
     CHRISTMAS("크리스마스 디데이 할인", 0),
     WEEKDAY("평일 할인", 0),
@@ -40,6 +45,16 @@ public enum Discount {
         int sum = 0;
         for (Discount discountName : Discount.values()) {
             if (discountName.getAmount() != 0) {
+                sum += discountName.getAmount();
+            }
+        }
+        return sum;
+    }
+
+    public static int getTotalDiscount() {
+        int sum = 0;
+        for (Discount discountName : Discount.values()) {
+            if (!discountName.getDiscountType().equals("증정 이벤트") && discountName.getAmount() != 0) {
                 sum += discountName.getAmount();
             }
         }
