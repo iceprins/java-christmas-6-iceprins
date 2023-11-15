@@ -1,5 +1,7 @@
 package christmas.model;
 
+import java.util.*;
+
 public enum Menu {
     MUSHROOM_SOUP("양송이수프", "appetizer", 6000),
     TAPAS("타파스", "appetizer", 5500),
@@ -37,5 +39,12 @@ public enum Menu {
 
     public int getPrice() {
         return price;
+    }
+
+    public static List<String> getMenuNameSet() {
+        List<String> menus = new ArrayList<>();
+        List<Menu> names = Arrays.asList((Menu.values()));
+        names.forEach(Menu -> menus.add(Menu.getMenuName()));
+        return menus;
     }
 }
