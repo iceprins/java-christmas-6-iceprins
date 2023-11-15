@@ -60,4 +60,18 @@ public enum Discount {
         }
         return sum;
     }
+
+    private static List<String> getBenefitInfo() {
+        DecimalFormat df = new DecimalFormat();
+        List<String> benefitHistory = new ArrayList<>();
+
+        for (Discount discountName : Discount.values()) {
+            if (discountName.getAmount() != 0) {
+                String benefitInfo = discountName.getDiscountType() + OutputViewConstant.COLON
+                        + df.format(-discountName.getAmount()) + OutputViewConstant.WON;
+                benefitHistory.add(benefitInfo);
+            }
+        }
+        return benefitHistory;
+    }
 }
