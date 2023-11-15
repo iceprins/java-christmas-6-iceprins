@@ -28,4 +28,16 @@ public class Order {
     public int getTotalAfterDc() {
         return getTotalBeforeDc() -Discount.getTotalDiscount();
     }
+
+    public static int getNumberOfDessert(Map<String, Integer> orders) {
+        int sum = 0;
+        List<String> menuNames = new ArrayList<>(orders.keySet());
+
+        for (Menu menu : Menu.getDessertMenu()) {
+            if (menuNames.contains(menu.getMenuName())) {
+                sum += orders.get(menu.getMenuName());
+            }
+        }
+        return sum;
+    }
 }
