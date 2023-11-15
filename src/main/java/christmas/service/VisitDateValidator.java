@@ -3,7 +3,7 @@ package christmas.service;
 public class VisitDateValidator {
     private static void isNothing(String input) {
         if (input.isEmpty()) {
-            throw new IllegalArgumentException(Constant.ERROR_MESSAGE + Constant.NOTHING_DATE);
+            throw new IllegalArgumentException(InputViewConstant.ERROR_MESSAGE + InputViewConstant.INVALID_DATE);
         }
     }
 
@@ -11,7 +11,7 @@ public class VisitDateValidator {
         for (int i = 0; i < input.length(); i++) {
             char target = input.charAt(i);
             if (!Character.isDigit(target)) {
-                throw new IllegalArgumentException(Constant.ERROR_MESSAGE + Constant.NOT_DIGIT);
+                throw new IllegalArgumentException(InputViewConstant.ERROR_MESSAGE + InputViewConstant.INVALID_DATE);
             }
         }
     }
@@ -19,7 +19,7 @@ public class VisitDateValidator {
     private static void isRightRange(String input) {
         int changedInput = Integer.parseInt(input);
         if (changedInput < 1 || changedInput > 31) {
-            throw new IllegalArgumentException(Constant.ERROR_MESSAGE + Constant.INVALID_DATE);
+            throw new IllegalArgumentException(InputViewConstant.ERROR_MESSAGE + InputViewConstant.INVALID_DATE);
         }
     }
 
