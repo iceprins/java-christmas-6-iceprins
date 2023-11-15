@@ -26,4 +26,13 @@ public enum Discount {
     public void setAmount(int amount) {
         this.amount = amount;
     }
+
+    private static boolean isNoDiscount() {
+        for (Discount discountName : Discount.values()) {
+            if (discountName.getAmount() != 0) {
+                return true;
+            }
+        }
+        return false;
+    }
 }
