@@ -68,4 +68,14 @@ public enum Menu {
         }
         return mainMenu;
     }
+
+    public static List<Menu> getDessertMenu() {
+        List<Menu> dessertMenu = new ArrayList<>();
+        for (Menu menu : Menu.values()) {
+            if (menu.getType().equals("dessert")) {
+                dessertMenu.add(menu);
+            }
+        }
+        return dessertMenu;
+    }
 }
