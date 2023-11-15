@@ -27,4 +27,10 @@ public class VisitDate {
             Discount.WEEKDAY.setAmount(Order.getNumberOfDessert(orders) * WEEK_DISCOUNT);
         }
     }
+
+    private void calculateWeekendDiscount(Map<String, Integer> orders) {
+        if (date % 7 == 1 || date % 7 == 2) {
+            Discount.WEEKEND.setAmount(Order.getNumberOfMain(orders) * WEEK_DISCOUNT);
+        }
+    }
 }
